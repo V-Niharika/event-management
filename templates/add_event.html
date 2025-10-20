@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+  <title>Add Event</title>
+</head>
+<body>
+  <h1>Add New Event</h1>
+  <form method="post">
+    <label>Title: <input type="text" name="title" required></label><br><br>
+    <label>Date: <input type="text" name="date" placeholder="e.g., 25 Oct 2025" required></label><br><br>
+    <label>Description:<br><textarea name="description"></textarea></label><br><br>
+    <button type="submit">Add Event</button>
+  </form>
+  <br>
+  <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>

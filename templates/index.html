@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+  <title>Event Management System</title>
+</head>
+<body>
+  <h1>Event Management System</h1>
+  <a href="{{ url_for('add_event') }}">➕ Add Event</a>
+  <hr>
+  {% if events %}
+    <ul>
+    {% for e in events %}
+      <li><strong>{{ e.title }}</strong> — {{ e.date }}<br>{{ e.desc }}</li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>No events yet. Add one!</p>
+  {% endif %}
+</body>
+</html>

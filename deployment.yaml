@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-management-deployment
+  labels:
+    app: event-management
+spec:
+  replicas: 1   # You can increase this for scaling
+  selector:
+    matchLabels:
+      app: event-management
+  template:
+    metadata:
+      labels:
+        app: event-management
+    spec:
+      containers:
+        - name: event-management
+          image: niharika345/event-management:latest   # <-- Replace with your Docker Hub username
+          ports:
+            - containerPort: 5000
+          imagePullPolicy: Always
