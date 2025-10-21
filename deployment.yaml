@@ -5,7 +5,7 @@ metadata:
   labels:
     app: event-management
 spec:
-  replicas: 1   # You can increase this for scaling
+  replicas: 1
   selector:
     matchLabels:
       app: event-management
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: event-management
-          image: niharika345/event-management:1.1 # <-- Replace with your Docker Hub username
+          image: niharika345/event-management:1.1
           ports:
             - containerPort: 5000
           imagePullPolicy: IfNotPresent
