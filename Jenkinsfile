@@ -4,7 +4,7 @@ pipeline {
     environment {
         // 🐳 Docker Hub account details (⚠️ NEVER use real password in public repo)
         DOCKERHUB_USER = 'niharika345'
-        DOCKERHUB_PASS = 'Niharika203'
+        DOCKERHUB_PASS = 'Niharika@03'
         IMAGE = "${DOCKERHUB_USER}/event-management"
         TAG = "${env.BUILD_NUMBER}"
 
