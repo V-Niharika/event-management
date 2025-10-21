@@ -19,4 +19,4 @@ spec:
           image: niharika345/event-management:1.1 # <-- Replace with your Docker Hub username
           ports:
             - containerPort: 5000
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
