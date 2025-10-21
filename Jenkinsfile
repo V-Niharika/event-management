@@ -36,9 +36,9 @@ pipeline {
                     echo "📦 Logging into Docker Hub and pushing image..."
                     sh """
                         echo "${DOCKERHUB_PASS}" | docker login -u "${DOCKERHUB_USER}" --password-stdin
-                        docker tag ${IMAGE}:${TAG} ${IMAGE}:latest
+                        docker tag ${IMAGE}:${TAG} ${IMAGE}:1.1
                         docker push ${IMAGE}:${TAG}
-                        docker push ${IMAGE}:latest
+                        docker push ${IMAGE}:1.1
                     """
                 }
             }
