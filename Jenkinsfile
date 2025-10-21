@@ -34,7 +34,7 @@ pipeline {
             steps {
                 script {
                     echo "📦 Logging into Docker Hub and pushing image..."
-                    sh """
+                    bat """
                         echo "${DOCKERHUB_PASS}" | docker login -u "${DOCKERHUB_USER}" --password-stdin
                         docker tag ${IMAGE}:${TAG} ${IMAGE}:1.1
                         docker push ${IMAGE}:${TAG}
@@ -48,7 +48,7 @@ pipeline {
             steps {
                 script {
                     echo "⚙️ Deploying application to Kubernetes..."
-                    sh '''
+                    bat '''
                         kubectl apply -f deployment.yaml
                         kubectl apply -f service.yaml
                         kubectl set image deployment/event-management-deployment event-management=${IMAGE}:${TAG} --record || true
