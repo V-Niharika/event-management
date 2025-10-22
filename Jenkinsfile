@@ -52,7 +52,7 @@ pipeline {
                         kubectl apply -f deployment.yaml
                         kubectl apply -f service.yaml
                         kubectl set image deployment/event-management-deployment event-management=${IMAGE}:${TAG} --record || true
-                        kubectl rollout status deployment/event-management-deployment --timeout=90s
+                        kubectl rollout status deployment/event-management-deployment --timeout=180s
                     '''
                 }
             }
