@@ -58,7 +58,6 @@ pipeline {
             kubectl set image deployment/event-management-deployment event-management=niharika345/event-management:1.1 || exit 0
             kubectl rollout status deployment/event-management-deployment --timeout=90s || echo Rollout timed out, continuing...
             '''
-=======
             steps {
                 script {
                     echo "⚙️ Deploying application to Kubernetes..."
