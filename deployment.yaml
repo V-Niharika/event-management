@@ -16,7 +16,11 @@ spec:
     spec:
       containers:
         - name: event-management
+<<<<<<< HEAD
           image: niharika345/event-management:1.1
+=======
+          image: niharika345/event-management:1.1  # <-- Replace with your Docker Hub username
+>>>>>>> 9f7a9ff (Update Jenkinsfile)
           ports:
             - containerPort: 5000
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent

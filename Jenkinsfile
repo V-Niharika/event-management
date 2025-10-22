@@ -45,6 +45,7 @@ pipeline {
         }
 
         stage('Deploy to Kubernetes') {
+
     steps {
         script {
             echo '============================'
@@ -57,6 +58,19 @@ pipeline {
             kubectl set image deployment/event-management-deployment event-management=niharika345/event-management:1.1 || exit 0
             kubectl rollout status deployment/event-management-deployment --timeout=90s || echo Rollout timed out, continuing...
             '''
+=======
+            steps {
+                script {
+                    echo "⚙️ Deploying application to Kubernetes..."
+                    sh '''
+                        kubectl apply -f deployment.yaml
+                        kubectl apply -f service.yaml
+                        kubectl set image deployment/event-management-deployment event-management=${IMAGE}:${TAG} --record || true
+                        kubectl rollout status deployment/event-management-deployment --timeout=180s
+                    '''
+                }
+            }
+
         }
     }
 }
