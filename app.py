@@ -12,7 +12,7 @@ def index():
 @app.route("/add", methods=["GET", "POST"])
 def add_event():
     if request.method == "POST":
-        title= request.form["title"]
+        title = request.form["title"]
         date = request.form["date"]
         desc = request.form["description"]
         events.append({"title": title, "date": date, "desc": desc})
