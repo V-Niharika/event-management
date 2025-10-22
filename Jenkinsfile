@@ -47,26 +47,16 @@ pipeline {
         stage('Deploy to Kubernetes') {
     steps {
         script {
-            echo "⚙️ Deploying application to Kubernetes..."
-
-            // Apply manifests
-            bat 'kubectl apply -f deployment.yaml'
-            bat 'kubectl apply -f service.yaml'
-
-            // Update image
-            bat 'kubectl set image deployment/event-management-deployment event-management=niharika345/event-management:1.1 || true'
-
-            // Wait longer for rollout
+            echo '============================'
+            echo '⚙️ Deploying to Kubernetes...'
+            echo '============================'
+            
             bat '''
-                echo Checking rollout status...
-                kubectl rollout status deployment/event-management-deployment --timeout=300s || (
-                    echo "⚠️ Rollout took too long, but continuing anyway..." &&
-                    kubectl get pods &&
-                    kubectl describe deployment event-management-deployment
-                )
+            kubectl apply -f deployment.yaml
+            kubectl apply -f service.yaml
+            kubectl set image deployment/event-management-deployment event-management=niharika345/event-management:1.1 || exit 0
+            kubectl rollout status deployment/event-management-deployment --timeout=90s || echo Rollout timed out, continuing...
             '''
-
-            echo "✅ Deployment applied successfully!"
         }
     }
 }
